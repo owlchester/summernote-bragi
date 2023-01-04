@@ -78,18 +78,6 @@ export default class BragiModal {
             this.$modal.find('form').hide();
             this.showError(data.message, true);
         }
-
-
-        /*this.$modal.find('.header-text').html(data.header);
-
-        if (data.error) {
-            console.log('bradi', 'error', data.error);
-            this.showError(data.message, true);
-            return;
-        }
-
-        this.showForm(data);
-        return;*/
     }
 
     showError(message_text: any, permanent: any = false) {
