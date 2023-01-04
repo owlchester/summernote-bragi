@@ -67,13 +67,17 @@ export default class BragiModal {
         this.availableTokens(data.tokens);
 
         if (data.error) {
-            //console.log('bradi', 'error', data.error);
             this.showError(data.message, true);
             return;
         }
 
         this.$modal.find('.generated').html(data.result).show();
-        this.$modal.find('button[name="insert"]').show();
+        this.$modal.find('.modal-footer').show();
+
+        if (data.tokens === 0) {
+            this.$modal.find('form').hide();
+            this.showError(data.message, true);
+        }
 
 
         /*this.$modal.find('.header-text').html(data.header);
@@ -126,14 +130,14 @@ export default class BragiModal {
         this.$modal.find('.bragi-loader').show();
         this.$modal.find('input').prop('disabled', true);
         this.$modal.find('button[name="submit"]').prop('disabled', true);
-        this.$modal.find('button[name="insert"]').hide();
+        this.$modal.find('.modal-footer').hide();
         this.$modal.find('.generated').hide();
     }
 
     hideGenerating () {
         this.$modal.find('.bragi-loader').hide();
         this.$modal.find('input').prop('disabled', false);
-        this.$modal.find('button[name="submit"]').prop('disabled', false);
+        this.$modal.find('.modal-footer').prop('disabled', false);
     }
 
     hideErrors () {
@@ -225,11 +229,13 @@ export default class BragiModal {
                                     + '</span>'
                                 + '</div>'
                             + '</form>'
-            + '<div class="p-3 generated text-break"></div>'
-            + '<button name="insert" class="btn btn-primary" style="display: none"></button>'
+                            + '<div class="py-5 generated text-break"></div>'
                             + '<div class="text-center bragi-loader m-2" style="display: none">'
                                 + '<i class="fa-solid fa-spinner fa-spin fa-3x" aria-hidden="true"></i>'
                             + '</div>'
+                        + '</div>'
+                        + '<div class="modal-footer" style="display: none">'
+                            + '<button name="insert" class="btn btn-primary"></button>'
                         + '</div>'
                     + '</div>'
                 + '</div>'
