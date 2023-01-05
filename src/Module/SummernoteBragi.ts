@@ -95,7 +95,6 @@ export default class SummernoteBragi {
             );
         });
         this.modal.event.on('generate', function (random: any, prompt: any, name: any) {
-            console.log('event triggered', prompt, name);
             _this.data_manager.generate(prompt, name);
         });
 

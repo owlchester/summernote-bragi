@@ -46,7 +46,7 @@ export default class BragiModal {
     // append data to the modal with data object
     addData(data: any) {
 
-        console.log('bragi', 'addData', data);
+        //console.log('bragi', 'addData', data);
 
         this.$modal.find('.header-text').html(data.header);
 
@@ -62,7 +62,7 @@ export default class BragiModal {
     // append generated data to the modal with data object
     addGenerated(data: any) {
 
-        console.log('bragi', 'addGenerated', data);
+        //console.log('bragi', 'addGenerated', data);
 
         this.availableTokens(data.tokens);
 
@@ -100,6 +100,7 @@ export default class BragiModal {
         this.$modal.find('button[name="insert"]').html(data.texts.insert);
         this.$modal.find('.token-count').html(data.tokens);
         this.$modal.find('.token-text').html(data.texts.tokens);
+        this.$modal.find('input').focus();
         this.availableTokens(data.tokens);
 
         var $form = this.$modal.find('form[name="bragi-form"]');
@@ -124,8 +125,8 @@ export default class BragiModal {
 
     hideGenerating () {
         this.$modal.find('.bragi-loader').hide();
-        this.$modal.find('input').prop('disabled', false);
-        this.$modal.find('.modal-footer').prop('disabled', false);
+        this.$modal.find('input').removeAttr('disabled').focus();
+        this.$modal.find('button[name="submit"]').removeAttr('disabled');
     }
 
     hideErrors () {
