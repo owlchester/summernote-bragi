@@ -98,6 +98,7 @@ export default class BragiModal {
         this.$modal.find('input').attr('maxlength', data.limits.prompt);
         this.$modal.find('button[name="submit"]').html(data.texts.submit);
         this.$modal.find('button[name="insert"]').html(data.texts.insert);
+        this.$modal.find('.bragi-loading').html(data.texts.loading);
         this.$modal.find('.token-count').html(data.tokens);
         this.$modal.find('.token-text').html(data.texts.tokens);
         this.$modal.find('input').focus();
@@ -204,11 +205,15 @@ export default class BragiModal {
                         + '<div class="modal-header">'
                             + (bootsrap_version == 3 ? header_content.join('') : header_content.reverse().join(''))
                         + '</div>'
-                        + '<div class="modal-body">'
-                            + '<p class="help-block header-text"></p>'
-                            + '<p class="help-block token-text"></p>'
-                            + '<div class="message" ></div >'
-                            + '<form method="GET" action="" name="bragi-form" style="display: none">'
+                        + '<div class="modal-body p-8">'
+                            + '<div class="flex">'
+                                + '<img src="/images/bragi/bragi.png" alt="Bragi" class="flex-none w-40 h-40" />'
+                                + '<div class="flex-grow p-5">'
+                                    + '<p class="help-block text-xl header-text"></p>'
+                                    + '<p class="help-block text-xl token-text"></p>'
+                                + '</div>'
+                            + '</div>'
+                            + '<form method="GET" action="" name="bragi-form" class="mb-2" style="display: none">'
                                 + '<div class="input-group">'
                                     + '<input type="text" name="prompt" class="form-control" data-skip-unsaved="true" />'
                                     + '<span class="input-group-btn">'
@@ -218,9 +223,11 @@ export default class BragiModal {
                                     + '</span>'
                                 + '</div>'
                             + '</form>'
+                            + '<div class="message" ></div >'
                             + '<div class="py-5 generated text-break"></div>'
                             + '<div class="text-center bragi-loader m-2" style="display: none">'
                                 + '<i class="fa-solid fa-spinner fa-spin fa-3x" aria-hidden="true"></i>'
+                                + '<p class="p-5 bragi-loading"></p>'
                             + '</div>'
                         + '</div>'
                         + '<div class="modal-footer" style="display: none">'
