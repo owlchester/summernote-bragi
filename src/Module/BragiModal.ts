@@ -143,8 +143,13 @@ export default class BragiModal {
             var prompt = $modal.find('input').val();
             var nameField = $('[name="name"]');
             var name = nameField ? nameField.val() : null;
+
+            var genderField = $('[name="sex"]');
+            var gender = genderField ? genderField.val() : null;
+            var pronounsField = $('[name="pronouns"]');
+            var pronouns = pronounsField ? pronounsField.val() : null;
             _this.hideErrors();
-            _this.event.trigger('generate', [_this, prompt, name]);
+            _this.event.trigger('generate', [_this, prompt, {name: name, gender: gender, pronouns: pronouns}]);
             return false;
         });
 
@@ -224,7 +229,7 @@ export default class BragiModal {
                                 + '</div>'
                             + '</form>'
                             + '<div class="message" ></div >'
-                            + '<div class="py-5 generated text-break"></div>'
+                            + '<div class="pt-5 generated text-break"></div>'
                             + '<div class="text-center bragi-loader m-2" style="display: none">'
                                 + '<i class="fa-solid fa-spinner fa-spin fa-3x" aria-hidden="true"></i>'
                                 + '<p class="p-5 bragi-loading"></p>'

@@ -113,16 +113,17 @@ export default class DataManager {
         }
     }
 
-    generate(prompt: any,  name: any) {
+    generate(prompt: any,  fields: any) {
         console.log('DataManager', 'generate');
         const _this = this;
         this.event.trigger('beforeGenerating');
         const current_link = _this.fetch_url;
+        fields.prompt = prompt;
 
         $.ajax({
             url: current_link,
             method: 'POST',
-            data: {prompt: prompt, name: name},
+            data: fields,
             beforeSend:function(xhr: any){
                 // set the request link to get it afterwards in the response
                 xhr.request_link = current_link;

@@ -94,8 +94,8 @@ export default class SummernoteBragi {
                 '<p>' + generatedText + '</p>'
             );
         });
-        this.modal.event.on('generate', function (random: any, prompt: any, name: any) {
-            _this.data_manager.generate(prompt, name);
+        this.modal.event.on('generate', function (random: any, prompt: any, fields: any) {
+            _this.data_manager.generate(prompt, fields);
         });
 
         this.modal.event.on('close', function (bragi_modal: any) {
