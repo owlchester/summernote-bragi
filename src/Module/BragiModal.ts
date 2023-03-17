@@ -140,16 +140,27 @@ export default class BragiModal {
 
         // Submitting the form
         $modal.find('form').submit(function (event: any) {
-            var prompt = $modal.find('input').val();
-            var nameField = $('[name="name"]');
-            var name = nameField ? nameField.val() : null;
+            let prompt = $modal.find('input').val();
 
-            var genderField = $('[name="sex"]');
-            var gender = genderField ? genderField.val() : null;
-            var pronounsField = $('[name="pronouns"]');
-            var pronouns = pronounsField ? pronounsField.val() : null;
+            // Adding context is optional
+            let nameField = $('[name="name"]');
+            let context:{[k: string]: any} = {};
+            if (nameField) {
+                let bragiName = nameField.data('bragi-name');
+                context.name = bragiName ? bragiName : nameField.val();
+            }
+
+            let genderField = $('[name="sex"]');
+            if (genderField) {
+                context.gender = genderField.val();
+            }
+            let pronounsField = $('[name="pronouns"]');
+            if (pronounsField) {
+                context.pronouns = pronounsField.val();
+            }
+
             _this.hideErrors();
-            _this.event.trigger('generate', [_this, prompt, {name: name, gender: gender, pronouns: pronouns}]);
+            _this.event.trigger('generate', [_this, prompt, context]);
             return false;
         });
 
