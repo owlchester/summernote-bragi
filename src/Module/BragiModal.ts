@@ -2,7 +2,6 @@ import EventManager from './EventManager'
 
 export default class BragiModal {
     private $css: JQuery;
-    private readonly select_class: string;
     private event: EventManager;
     private template: string;
     private readonly $modal: any;
@@ -27,9 +26,6 @@ export default class BragiModal {
 
         this.template = this.getModalTemplate();
         this.$modal = $(this.template).hide();
-
-        // class to add to image when selected
-        this.select_class = "selected-img";
 
         this.addStyleToDom();
         this.setOptions();
@@ -232,11 +228,9 @@ export default class BragiModal {
                             + '<form method="GET" action="" name="bragi-form" class="mb-2" style="display: none">'
                                 + '<div class="input-group">'
                                     + '<input type="text" name="prompt" class="form-control" data-skip-unsaved="true" />'
-                                    + '<span class="input-group-btn">'
-                                        + '<button type="submit" name="submit" class="btn btn-primary">'
+                                    + '<button type="submit" name="submit" class="btn btn-primary">'
 
-                                        + '</button>'
-                                    + '</span>'
+                                    + '</button>'
                                 + '</div>'
                             + '</form>'
                             + '<div class="message" ></div >'
@@ -260,9 +254,6 @@ export default class BragiModal {
         this.$css = $('<style>'
                         +'.modal.summernote-bragi .modal-body{'
                             +'overflow: scroll;'
-                        +'}'
-                        +'.'+ this.select_class +'{'
-                            +'background-color: #5CB85C;'
                         +'}'
                     +'</style>');
         this.$css.appendTo('body');

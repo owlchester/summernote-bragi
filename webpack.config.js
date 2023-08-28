@@ -38,7 +38,7 @@ const bragiBrickConfig = { ...config, ...{
     entry: "./src/index.ts",
     output: {
         path: path.resolve( __dirname, '../kanka/public/vendor/summernote/plugin/kanka' ),
-        filename: 'summernote-bragi-kanka.min.js',
+        filename: 'summernote-bragi.min.js',
     },
 }};
 
@@ -46,8 +46,8 @@ const bragiModuleConfig = { ...config, ...{
     name: "bragiModule",
     entry: "./src/Module/index.ts",
     output: {
-        path: path.resolve( __dirname, 'dist' ),
-        filename: 'module/index.js',
+        path: path.resolve( __dirname, '../kanka/public/vendor/summernote/plugin/kanka' ),
+        filename: 'summernote-bragi.min.js',
     },
 }};
 
