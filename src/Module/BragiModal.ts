@@ -77,13 +77,14 @@ export default class BragiModal {
     }
 
     showError(message_text: any, permanent: any = false) {
-        var $message = this.$modal.find('.message');
+        let $message = this.$modal.find('.message');
 
         $message.html('<p class="alert alert-danger">' + message_text + '</p>');
+        $message.show();
 
         if (!permanent) {
             setTimeout(function () {
-                $message.html('');
+                $message.html('').hide();
             }, 5000);
         }
     }
@@ -217,31 +218,27 @@ export default class BragiModal {
                         + '<div class="modal-header">'
                             + (bootsrap_version == 3 ? header_content.join('') : header_content.reverse().join(''))
                         + '</div>'
-                        + '<div class="modal-body p-8">'
-                            + '<div class="flex">'
+                        + '<div class="modal-body p-8 flex flex-col gap-4 md:gap-5">'
+                            + '<div class="flex gap-5">'
                                 + '<img src="/images/bragi/bragi.png" alt="Bragi" class="flex-none w-40 h-40" />'
-                                + '<div class="flex-grow p-5">'
-                                    + '<p class="help-block text-xl header-text"></p>'
-                                    + '<p class="help-block text-xl token-text"></p>'
+                                + '<div class="flex-grow flex flex-col gap-2">'
+                                    + '<p class="text-neutral-content header-text"></p>'
+                                    + '<p class="text-neutral-content token-text"></p>'
                                 + '</div>'
                             + '</div>'
-                            + '<form method="GET" action="" name="bragi-form" class="mb-2" style="display: none">'
-                                + '<div class="input-group">'
-                                    + '<input type="text" name="prompt" class="form-control" data-skip-unsaved="true" />'
-                                    + '<button type="submit" name="submit" class="btn btn-primary">'
-
-                                    + '</button>'
-                                + '</div>'
+                            + '<form method="GET" action="" name="bragi-form" class="flex gap-1" style="display: none">'
+                                + '<input type="text" name="prompt" class="w-full" data-skip-unsaved="true" />'
+                                + '<button type="submit" name="submit" class="btn2 btn-primary"></button>'
                             + '</form>'
-                            + '<div class="message" ></div >'
-                            + '<div class="pt-5 generated text-break"></div>'
-                            + '<div class="text-center bragi-loader m-2" style="display: none">'
+                            + '<div class="message" style="display: none"></div >'
+                            + '<div class="generated text-break" style="display: none"></div>'
+                            + '<div class="text-center bragi-loader" style="display: none">'
                                 + '<i class="fa-solid fa-spinner fa-spin fa-3x" aria-hidden="true"></i>'
-                                + '<p class="p-5 bragi-loading"></p>'
+                                + '<p class="bragi-loading"></p>'
                             + '</div>'
                         + '</div>'
                         + '<div class="modal-footer" style="display: none">'
-                            + '<button name="insert" class="btn btn-primary"></button>'
+                            + '<button name="insert" class="btn2 btn-primary"></button>'
                         + '</div>'
                     + '</div>'
                 + '</div>'

@@ -114,7 +114,7 @@ export default class DataManager {
     }
 
     generate(prompt: any,  fields: any) {
-        console.log('DataManager', 'generate');
+        //console.log('DataManager', 'generate');
         const _this = this;
         this.event.trigger('beforeGenerating');
         const current_link = _this.fetch_url;
