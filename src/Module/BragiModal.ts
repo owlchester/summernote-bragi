@@ -231,7 +231,7 @@ export default class BragiModal {
                                 + '<button type="submit" name="submit" class="btn2 btn-primary"></button>'
                             + '</form>'
                             + '<div class="message" style="display: none"></div >'
-                            + '<div class="generated text-break" style="display: none"></div>'
+                            + '<div class="generated text-break flex flex-col gap-2" style="display: none"></div>'
                             + '<div class="text-center bragi-loader" style="display: none">'
                                 + '<i class="fa-solid fa-spinner fa-spin fa-3x" aria-hidden="true"></i>'
                                 + '<p class="bragi-loading"></p>'
